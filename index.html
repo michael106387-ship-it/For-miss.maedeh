@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>پرونده‌ی معرفی میکائیل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#14120f; --bg2:#1d1a15; --ink:#2b2218; --gold:#c9a45c; --gold2:#e6cf9a;
+  --paper:#f1e6cd; --paper2:#e8d9b6; --red:#a3261f; --font:'Vazirmatn',Tahoma,'Segoe UI',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+  font-family:var(--font);color:var(--gold2);line-height:2;
+  background:radial-gradient(ellipse at 50% 0%,#2a241b 0%,var(--bg) 60%) fixed;
+  display:flex;justify-content:center;padding:20px 14px 40px;
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;
+  background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 4px)}
+.wrap{width:100%;max-width:640px;position:relative}
+.screen{display:none}
+.screen.active{display:block}
+
+/* cover */
+#cover{text-align:center;padding-top:6vh}
+.folder{
+  background:linear-gradient(160deg,#5a4426,#3b2c17);border:1px solid var(--gold);
+  border-radius:6px 26px 6px 6px;padding:38px 22px 34px;position:relative;
+  box-shadow:0 20px 50px #000a, inset 0 0 0 6px #0003, inset 0 0 0 7px #c9a45c55;
+  animation:open .9s ease both;
+}
+.folder::before{content:"";position:absolute;top:-16px;right:0;width:42%;height:16px;
+  background:#5a4426;border:1px solid var(--gold);border-bottom:0;border-radius:10px 10px 0 0}
+.fileno{font-size:.85rem;color:var(--gold);letter-spacing:.05em;border-bottom:1px dashed #c9a45c88;
+  display:inline-block;padding:0 14px 4px;margin-bottom:18px}
+h1{font-size:clamp(1.9rem,8vw,2.8rem);font-weight:900;color:var(--gold2);line-height:1.5}
+.sub{margin-top:8px;font-size:1.05rem;color:var(--gold)}
+.stamp{display:inline-block;margin:22px 0 14px;border:3px double var(--red);color:#d8554b;
+  padding:2px 22px;border-radius:6px;font-weight:900;font-size:1.4rem;transform:rotate(-6deg);
+  opacity:.9;animation:stamp .5s .8s cubic-bezier(.3,1.6,.5,1) both}
+.hook{font-size:1rem;color:#e9dcc0;max-width:30em;margin:0 auto 24px}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:16px 0}
+
+/* buttons */
+.btn{font-family:inherit;font-size:1.05rem;font-weight:700;cursor:pointer;border-radius:10px;
+  padding:12px 24px;min-height:48px;border:1px solid var(--gold);transition:.2s}
+.btn.main{background:var(--gold);color:#241b0d}
+.btn.main:hover{background:var(--gold2)}
+.btn.ghost{background:transparent;color:var(--gold2)}
+.btn.ghost:hover{background:#c9a45c22}
+.btn:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
+
+/* letters */
+.top{display:flex;justify-content:space-between;align-items:center;font-size:.95rem;color:var(--gold);margin-bottom:8px}
+.bar{height:5px;background:#ffffff14;border-radius:5px;overflow:hidden;margin-bottom:22px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .5s ease}
+.paper{
+  background-color:#241e16;color:#fff;
+  border-radius:4px;padding:28px 24px 30px;position:relative;
+  box-shadow:0 18px 40px #000b,0 2px 0 #fff6 inset;border:1px solid #b99a5a;
+  background-image:repeating-linear-gradient(180deg,transparent 0 35px,#a8884a22 35px 36px);
+}
+.paper::after{content:"";position:absolute;top:0;left:0;width:34px;height:34px;
+  background:linear-gradient(225deg,var(--bg) 50%,#cdb57e 50%);border-bottom-right-radius:6px}
+.paper.in{animation:slide .45s ease both}
+.paper h2{font-size:1.2rem;font-weight:900;color:var(--gold2);border-bottom:2px solid var(--gold);
+  padding-bottom:8px;margin-bottom:16px;line-height:1.7}
+.paper p{font-size:1.02rem;margin-bottom:10px;text-align:right}
+.nav{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.nav .btn{flex:1 1 140px}
+
+/* final letter */
+.paper.final{
+  background:radial-gradient(ellipse at 50% 0%,#fff3dd,#f3d9c0 70%,#ecc7b0);
+  border-color:#c98e7a;box-shadow:0 18px 50px #000b,0 0 60px #e08a6a44;
+  background-image:none;
+}
+.paper.final::after{background:linear-gradient(225deg,var(--bg) 50%,#dcae98 50%)}
+.paper.final h2{color:#7a2e2a;border-color:#b5524a;text-align:center}
+.paper.final p{font-size:1.08rem;color:#3a2420}
+.paper.final .big{
+  text-align:center;font-size:clamp(1.35rem,6vw,1.8rem);font-weight:900;color:#8c1f24;
+  margin:22px 0;padding:16px 8px;border-top:1px solid #b5524a88;border-bottom:1px solid #b5524a88;line-height:1.9;
+  animation:glow 3s ease-in-out infinite;
+}
+.paper.final .sign{margin-bottom:0}
+.paper.final .name{font-size:1.5rem;font-weight:900;color:#7a2e2a}
+.heart{text-align:center;font-size:1.4rem;margin-top:14px;color:#b5524a}
+
+@keyframes open{from{opacity:0;transform:perspective(800px) rotateX(-14deg) translateY(14px)}to{opacity:1;transform:none}}
+@keyframes slide{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes stamp{from{opacity:0;transform:rotate(-6deg) scale(2)}to{opacity:.9;transform:rotate(-6deg) scale(1)}}
+@keyframes glow{0%,100%{text-shadow:0 0 0 #0000}50%{text-shadow:0 0 14px #ff9a7a88}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:420px){.paper{padding:24px 18px 26px}.nav .btn{flex-basis:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section id="cover" class="screen active">
+    <div class="folder">
+      <div class="fileno">پرونده‌ی شماره‌ی ۰۰۱ • سطح دسترسی: یک نفر</div>
+      <h1>📜 پرونده‌ی معرفی میکائیل</h1>
+      <p class="sub">محرمانه ـ مخصوص خانم حافظ‌نیا</p>
+      <div class="stamp">محرمانه</div>
+      <div class="rule"></div>
+      <p class="hook">شش کاغذ، یک متهم، و چهار سال سابقه‌ی آشنایی. این پرونده فقط برای یک خواننده بسته نشده است.</p>
+      <button class="btn main" id="start">بررسی پرونده</button>
+    </div>
+  </section>
+
+  <section id="reader" class="screen">
+    <div class="top"><span id="count"></span><span>پرونده‌ی میکائیل</span></div>
+    <div class="bar"><i id="fill"></i></div>
+    <article class="paper" id="paper"></article>
+    <div class="nav" id="nav"></div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var LETTERS = [
+    { t: "📨 کاغذ اول | درخواست ملاقات", l: [
+      "سرکار خانم حافظ‌نیا،",
+      "فرستنده‌ی این نامه قصد دارد خود را به حضور محترم شما معرفی نماید.",
+      "چنانچه افتخار دهید و چند دقیقه از وقت گران‌بهای خود را در اختیار ایشان قرار دهید، موجب امتنان خواهد بود.",
+      "با تشکر از حسن توجه شما."
+    ]},
+    { t: "📄 کاغذ دوم | سوابق آشنایی", l: [
+      "نامبرده حدود چهار سال پیش، از طریق پیام‌رسان روبیکا، برای نخستین بار به شما پیام داده‌اند.",
+      "نام ایشان میکائیل بوده و آشنایی میان شما دو نفر از همان‌جا آغاز شده است.",
+      "با توجه به گذشت زمان، احتمال می‌رود برخی از جزئیات این آشنایی از حافظه‌ی شما پاک شده باشد.",
+      "لذا اینجانب مأموریت یافته‌ام جهت یادآوری، مدارک لازم را ارائه نمایم."
+    ]},
+    { t: "📄 کاغذ سوم | سوابق علمی", l: [
+      "میکائیل از جمله فیلسوفان برجسته و دانشمندان رشته‌ی ریاضیات به شمار می‌روند.",
+      "ایشان با برخورداری از نبوغی کم‌نظیر، از استعدادهای درخشان نسل جدید ریاضیات محسوب شده و پیش‌بینی می‌شود نامشان در آینده‌ای نه‌چندان دور در کنار بزرگان این علم قرار گیرد.",
+      "البته لازم به ذکر است که تاکنون هیچ نهاد علمی معتبری این ادعاها را تأیید نکرده است.",
+      "با این حال، خود نامبرده به‌شدت بر صحت آن‌ها تأکید دارند."
+    ]},
+    { t: "📄 کاغذ چهارم | مهارت‌های رزمی", l: [
+      "نامبرده در زمینه‌ی درگیری‌های تن‌به‌تن و ابداع روش‌های نوین مبارزه، از استعداد قابل‌توجهی برخوردارند.",
+      "از جمله تکنیک‌های اختصاصی ایشان، استفاده از چوب آب‌نبات در شرایط بحرانی است.",
+      "گزارش‌ها حاکی از آن است که این تکنیک در مواردی برای فروکردن چوب آب‌نبات در بینی افراد مورد استفاده قرار گرفته است.",
+      "کارشناسان همچنان در تلاش‌اند تا ارتباط این روش با اصول متعارف هنرهای رزمی را کشف نمایند."
+    ]},
+    { t: "📄 کاغذ پنجم | سوابق نوشیدنی و ارتباطات شبانه", l: [
+      "بر اساس اسناد موجود، نامبرده در مقطعی از زندگی، علاقه‌ی قابل‌توجهی به نوشیدنی‌های الکلی داشته‌اند و در این زمینه از تجربه‌ی فراوانی برخوردار بوده‌اند.",
+      "همچنین در یکی از شب‌های به‌یادماندنی، ایشان در شرایطی که ظاهراً میزان قابل‌توجهی نوشیدنی مصرف کرده بودند، با سرکار خانم حافظ‌نیا در یکی از برنامه‌های خاص، که نام آن برای ایشان ناخوشایند است، به مکالمه پرداخته‌اند.",
+      "جزئیات بیشتر این واقعه، بنا بر ملاحظات امنیتی، از پرونده حذف شده است."
+    ]},
+    { t: "📄 کاغذ ششم | نتیجه‌گیری نهایی", l: [
+      "سرکار خانم حافظ‌نیا،",
+      "فرد موردنظر، برخلاف شهرت علمی و رزمی خود، ارتباطات اجتماعی چندان گسترده‌ای ندارند و همواره ترجیح داده‌اند بخش بزرگی از زندگی‌شان برای دیگران ناشناخته باقی بماند.",
+      "بااین‌حال، در میان افرادی که طی این سال‌ها با ایشان آشنا شده‌اند، شخصی وجود دارد که جایگاهی متفاوت برایشان داشته است.",
+      "آن شخص، شما هستید.",
+      "شاید به همین دلیل است که این فیلسوف، دانشمند، مبارز و متخصص آب‌نبات تصمیم گرفته است چنین پرونده‌ای را تهیه کند؛ تا بهانه‌ای داشته باشد برای آنکه بار دیگر خود را به شما معرفی نماید.",
+      "و اکنون، پس از ارائه‌ی شواهد و مدارک فوق، اجازه دهید این معرفی‌نامه را با جمله‌ای ساده به پایان برسانیم:",
+      "از آشنایی با شما خوشبختم، سرکار خانم حافظ‌نیا.",
+      "با احترام،",
+      "میکائیل"
+    ]}
+  ];
+  var FA = "۰۱۲۳۴۵۶۷۸۹";
+  function fa(n) { return String(n).replace(/\d/g, function (d) { return FA[d]; }); }
+
+  var cover = document.getElementById("cover"),
+      reader = document.getElementById("reader"),
+      paper = document.getElementById("paper"),
+      nav = document.getElementById("nav"),
+      count = document.getElementById("count"),
+      fill = document.getElementById("fill"),
+      cur = 0;
+
+  function show(el) {
+    cover.classList.toggle("active", el === cover);
+    reader.classList.toggle("active", el === reader);
+    window.scrollTo(0, 0);
+  }
+
+  function btn(label, cls, fn) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "btn " + cls; b.textContent = label;
+    b.addEventListener("click", fn);
+    return b;
+  }
+
+  function render() {
+    var L = LETTERS[cur], last = cur === LETTERS.length - 1;
+    paper.className = "paper" + (last ? " final" : "");
+    paper.innerHTML = "";
+    var h = document.createElement("h2"); h.textContent = L.t; paper.appendChild(h);
+    L.l.forEach(function (line, i) {
+      var p = document.createElement("p");
+      p.textContent = line;
+      if (last) {
+        if (i === 6) p.className = "big";
+        if (i === 7) p.className = "sign";
+        if (i === 8) p.className = "name";
+      }
+      paper.appendChild(p);
+    });
+    if (last) {
+      var hr = document.createElement("div"); hr.className = "heart"; hr.textContent = "♥";
+      paper.appendChild(hr);
+    }
+    void paper.offsetWidth;
+    paper.classList.add("in");
+
+    count.textContent = "کاغذ " + fa(cur + 1) + " از " + fa(LETTERS.length);
+    fill.style.width = ((cur + 1) / LETTERS.length * 100) + "%";
+
+    nav.innerHTML = "";
+    if (last) {
+      nav.appendChild(btn("کاغذ قبلی", "ghost", function () { go(cur - 1); }));
+      nav.appendChild(btn("بازگشت به ابتدای پرونده", "main", function () { cur = 0; show(cover); }));
+    } else {
+      if (cur > 0) nav.appendChild(btn("کاغذ قبلی", "ghost", function () { go(cur - 1); }));
+      nav.appendChild(btn("کاغذ بعدی", "main", function () { go(cur + 1); }));
+    }
+  }
+
+  function go(i) {
+    if (i < 0 || i >= LETTERS.length) return;
+    cur = i; render(); window.scrollTo(0, 0);
+  }
+
+  document.getElementById("start").addEventListener("click", function () {
+    cur = 0; render(); show(reader);
+  });
+})();
+</script>
+</body>
+</html>
